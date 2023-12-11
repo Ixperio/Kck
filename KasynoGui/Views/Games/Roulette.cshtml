@@ -1,0 +1,695 @@
+﻿@model KasynoGui.Models.RuletkaViewModel
+@{
+    ViewBag.Title = "Roulette";
+}
+
+<style>
+    .header > .options > #agames > .underline {
+        width: 100%;
+        opacity: 1;
+    }
+    cont2{
+        padding: 0;
+        margin: 0;
+    }
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        height: 100%;
+        justify-items: center;
+        align-content: flex-start;
+        grid-column-gap: 30px;
+    }
+    .box {
+        background: linear-gradient(#10131A, #0e0e0e);
+        border-radius: 15px;
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 30px;
+        padding-top: 10px;
+        font-family: 'Pirata One';
+        color: #fff;
+        width: max-content;
+        height: 100%;
+        grid-template-rows: min-content 1px min-content 1px;
+        grid-row-gap: 10px;
+    }
+    .box > h4{
+        font-size: 2em;
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 0;
+        text-align: center;
+        height: min-content;
+    }
+    .vline {
+        width: 100%;
+        content: '';
+        height: 1px;
+        background-color: #202020;
+    }
+    .horizontal{
+        display: grid;
+        grid-column-gap: 50px;
+        width: 100%;
+        height: 100%;
+    }
+    main{
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        justify-items: center;
+        align-content: flex-start;
+        align-items: flex-start;
+    }
+    .data{
+        display: grid;
+        justify-content: center;
+        align-content: flex-start;
+    }
+    .rouletteboard {
+        display: grid;
+        grid-template-areas:
+            "zero board board board board board board twoone1"
+            "zero board board board board board board twoone2"
+            "zero board board board board board board twoone3"
+            "nothing firsttwelve firsttwelve secondtwelve secondtwelve thirdtwelve thirdtwelve nothing2"
+            "nothing oneeighteen even red black odd nineteenthirtysix nothing2";
+        width: min-content;
+        transform: scale(1.3);
+        margin: 40px;
+        margin-right: 70px;
+        margin-left: 70px;
+    }
+    .boardobjectyellow {
+        background-color: #E7B919;
+    }
+    .boardobjectgreen {
+        background-color: #52AB33;
+    }
+    .boardobjectred {
+        background-color: #D92A2A;
+    }
+    .boardobjectblack {
+        background-color: #000;
+    }
+    .boardobjectblue {
+        background-color: #133373;
+    }
+    .boardobjectpurple {
+        background-color: #702A92;
+    }
+
+    .boardobjectnothing{
+        background-image: url(@Url.Content("~/Content/Games/Roulette/tlonothing.png"));
+        background-repeat: repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    .dot{
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        content: '';
+        box-shadow: 0px 0px 2px 2px #fff;
+    }
+
+    .boardobject {
+        border: 1px solid #fff;
+        width: 100%;
+        content: '';
+        height: 100%;
+        box-sizing: border-box;
+        color: #fff;
+        font-family: 'Black Ops One', serif;
+        place-items: center;
+        place-content: center;
+        font-size: 0.8em;
+        display: grid;
+        cursor: pointer;
+        transition: 0.12s;
+    }
+    .rouletteboard > .numbers{
+        display: grid;
+        grid-template-columns: repeat(12, 32px);
+        grid-template-rows: repeat(3, 32px);
+        box-sizing: border-box;
+    }
+    .boardobject:hover{
+        filter: brightness(1.4);
+        transition: 0.2s;
+    }
+    .moneyplace{
+        display: grid;
+        grid-template-areas:
+            "bt1 bt2 bt3"
+            "bt4 bt5 bt6"
+            "input input submit"
+            "info info .";
+        grid-column-gap: 22px;
+        grid-row-gap: 22px;
+        font-family: 'Black Ops One', serif;
+    }
+    .fastpickmoney{
+        color: #000;
+        place-items: center;
+        display: grid;
+        border-radius: 5px;
+        background: linear-gradient(rgba(255,229,0,1),rgba(255,168,0,1));
+        outline: none;
+        text-align: center;
+        width: 100px;
+        height: 36px;
+        border: none;
+    }
+    .placebet{
+        display: grid;
+        grid-template-columns: max-content min-content;
+        justify-content: center;
+        justify-items: center;
+        align-content: flex-start;
+        align-items: flex-start;
+        grid-column-gap: 40px;
+        margin-top: 30px;
+    }
+    .placebet > .money{
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+        padding: 20px;
+        grid-row-gap: 5px;
+    }
+    .myMoney {
+        padding: 7px;
+        border-radius: 5px;
+        background-color: #1D1E1F;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: #fff;
+        font-family: 'Black Ops One', serif;
+        grid-template-columns: min-content min-content;
+        grid-column-gap: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield; /* Dodaj obsługę dla Firefox */
+    }
+    .block {
+        width: 10vw;
+        height: 10vw;
+        display: grid;
+        font-size: 2em;
+        color: #fff;
+        font-family: 'Black Ops One';
+        text-align: center;
+        place-content: center;
+        place-items: center;
+    }
+    .red {
+        background-color: #D92A2A;
+    }
+    .black {
+        background-color: #000;
+    }
+    .green {
+        background-color: #52AB33;
+    }
+    #lastblock{
+        transition: linear;
+    }
+</style>
+<script></script>
+<script>
+
+    var lastString = "na7fha";
+    var getNumber = -1;
+
+    $(document).ready(function () {
+
+        const speed = 5000;
+        var rand = 100;
+        const nextRoundIn = 8000;
+
+        getBets();
+        getRandomNumber();
+        setInterval(getRandomNumber, 45000);
+
+    });
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function spin(val, speed) {
+
+        $(".spin").css("transition", "ease-out "+(speed/1000)+"s");
+        setTimeout(function x() {
+            $(".spin").css("margin-left", "-" + (val * 10) + "vw");
+        }, 10);
+        setTimeout(function x() {
+            $(".spin").css("transition", "0s");
+
+            $(".spin").css("margin-left", "-" + ((val % 37) * 10) + "vw");
+
+            startCountdown();
+            getBets();
+        }, speed+500);
+
+    }
+
+
+    function getRandomNumber() {
+
+        $.ajax({
+            url: '@Url.Action("Index", "RandomNumber")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (result) {
+                // Wstaw zawartość diva do elementu o id="resultContainer"
+                $('#wynik').text(result.content);
+
+                if (lastString != result.gs) {
+                    lastString = result.gs;
+
+                    spin(result.content, 5000);
+                }
+
+            },
+            error: function () {
+                console.error('Wystąpił błąd.');
+            }
+        });
+    }
+
+    function getBets() {
+
+    $.ajax({
+        url: '@Url.Action("LastBets", "RandomNumber")',
+        type: 'GET',
+        dataType: 'json',
+        success: function (result) {
+            $('#lastBets').empty();
+                for (var i = 0; i < result.length; i++) {
+                    var bet = result[i];
+                  
+                    $('#lastBets').append('<div class="lastgames" style="display: grid; grid-template-columns: 1fr 2fr; justify-items: center;">' +
+                        '<div style="display: grid; border-radius: 2px; width: 25px; place-items: center; font-family: Arial;background-color:' + bet.GameString+';">' + bet.number + '</div>' +
+                        '<div style="display: grid; " id="lastSpins">' + bet.date + '</div> </div>');
+                }
+            
+        },
+        error: function () {
+            console.error('Wystąpił błąd.');
+        }
+    });
+}
+
+
+    function startCountdown() {
+        var time = 38000;
+        var timeBetter;
+        var interv = setInterval(function x() {
+            timeBetter = time / 1000;
+            $("#counter").html(timeBetter.toFixed(0));
+            time -= 1000;
+
+            if (time < 0) {
+                clearInterval(interv);
+            }
+        }, 1000);
+    }
+    //green red black
+    function onColor(val) {
+        alert(val);
+    }
+    //0-36
+    function onNumber(val) {
+
+        $("input[id='number']").val(val);
+
+    }
+    //1 2 3
+    function onTwelve(val) {
+        alert(val);
+    }
+    //1 2
+    function onEighteen(val) {
+        alert(val);
+    }
+    //
+    function onEven() {
+        alert("even");
+    }
+    function onOdd() {
+        alert("odd");
+    }
+    //1 2 3
+    function onTwoOne(val) {
+        alert(val);
+    }
+
+    function setMoney(val) {
+        $("#inputMoney").val(val);
+    }
+
+    function sendMoneyClick() {
+        $("#inputMoney").val()
+    }
+
+</script>
+<main>
+
+    <section class="horizontal" style="grid-template-columns: 1fr; overflow: hidden; width: 100vw; height: 10vw;">
+
+        <div class="spin" style="width: 1480vw; height: 10vw; display: -webkit-inline-box; overflow: hidden; text-align: justify; ">
+            <div class="block green">0</div>
+            <div class="block red">32</div>
+            <div class="block black">15</div>
+            <div class="block red">19</div>
+            <div class="block black">4</div>
+            <div class="block red">21</div>
+            <div class="block black">2</div>
+            <div class="block red">25</div>
+            <div class="block black">17</div>
+            <div class="block red">34</div>
+            <div class="block black">6</div>
+            <div class="block red">27</div>
+            <div class="block black">13</div>
+            <div class="block red">36</div>
+            <div class="block black">11</div>
+            <div class="block red">30</div>
+            <div class="block black">8</div>
+            <div class="block red">23</div>
+            <div class="block black">10</div>
+            <div class="block red">5</div>
+            <div class="block black">24</div>
+            <div class="block red">16</div>
+            <div class="block black">33</div>
+            <div class="block red">1</div>
+            <div class="block black">20</div>
+            <div class="block red">14</div>
+            <div class="block black">31</div>
+            <div class="block red">9</div>
+            <div class="block black">22</div>
+            <div class="block red">18</div>
+            <div class="block black">29</div>
+            <div class="block red">7</div>
+            <div class="block black">28</div>
+            <div class="block red">12</div>
+            <div class="block black">35</div>
+            <div class="block red">3</div>
+            <div class="block black">26</div>
+
+            <div class="block green">0</div>
+            <div class="block red">32</div>
+            <div class="block black">15</div>
+            <div class="block red">19</div>
+            <div class="block black">4</div>
+            <div class="block red">21</div>
+            <div class="block black">2</div>
+            <div class="block red">25</div>
+            <div class="block black">17</div>
+            <div class="block red">34</div>
+            <div class="block black">6</div>
+            <div class="block red">27</div>
+            <div class="block black">13</div>
+            <div class="block red">36</div>
+            <div class="block black">11</div>
+            <div class="block red">30</div>
+            <div class="block black">8</div>
+            <div class="block red">23</div>
+            <div class="block black">10</div>
+            <div class="block red">5</div>
+            <div class="block black">24</div>
+            <div class="block red">16</div>
+            <div class="block black">33</div>
+            <div class="block red">1</div>
+            <div class="block black">20</div>
+            <div class="block red">14</div>
+            <div class="block black">31</div>
+            <div class="block red">9</div>
+            <div class="block black">22</div>
+            <div class="block red">18</div>
+            <div class="block black">29</div>
+            <div class="block red">7</div>
+            <div class="block black">28</div>
+            <div class="block red">12</div>
+            <div class="block black">35</div>
+            <div class="block red">3</div>
+            <div class="block black">26</div>
+            <div class="block green">0</div>
+            <div class="block red">32</div>
+            <div class="block black">15</div>
+            <div class="block red">19</div>
+            <div class="block black">4</div>
+            <div class="block red">21</div>
+            <div class="block black">2</div>
+            <div class="block red">25</div>
+            <div class="block black">17</div>
+            <div class="block red">34</div>
+            <div class="block black">6</div>
+            <div class="block red">27</div>
+            <div class="block black">13</div>
+            <div class="block red">36</div>
+            <div class="block black">11</div>
+            <div class="block red">30</div>
+            <div class="block black">8</div>
+            <div class="block red">23</div>
+            <div class="block black">10</div>
+            <div class="block red">5</div>
+            <div class="block black">24</div>
+            <div class="block red">16</div>
+            <div class="block black">33</div>
+            <div class="block red">1</div>
+            <div class="block black">20</div>
+            <div class="block red">14</div>
+            <div class="block black">31</div>
+            <div class="block red">9</div>
+            <div class="block black">22</div>
+            <div class="block red">18</div>
+            <div class="block black">29</div>
+            <div class="block red">7</div>
+            <div class="block black">28</div>
+            <div class="block red">12</div>
+            <div class="block black">35</div>
+            <div class="block red">3</div>
+            <div class="block black">26</div>
+
+            <div class="block green">0</div>
+            <div class="block red">32</div>
+            <div class="block black">15</div>
+            <div class="block red">19</div>
+            <div class="block black">4</div>
+            <div class="block red">21</div>
+            <div class="block black">2</div>
+            <div class="block red">25</div>
+            <div class="block black">17</div>
+            <div class="block red">34</div>
+            <div class="block black">6</div>
+            <div class="block red">27</div>
+            <div class="block black">13</div>
+            <div class="block red">36</div>
+            <div class="block black">11</div>
+            <div class="block red">30</div>
+            <div class="block black">8</div>
+            <div class="block red">23</div>
+            <div class="block black">10</div>
+            <div class="block red">5</div>
+            <div class="block black">24</div>
+            <div class="block red">16</div>
+            <div class="block black">33</div>
+            <div class="block red">1</div>
+            <div class="block black">20</div>
+            <div class="block red">14</div>
+            <div class="block black">31</div>
+            <div class="block red">9</div>
+            <div class="block black">22</div>
+            <div class="block red">18</div>
+            <div class="block black">29</div>
+            <div class="block red">7</div>
+            <div class="block black">28</div>
+            <div class="block red">12</div>
+            <div class="block black">35</div>
+            <div class="block red">3</div>
+            <div class="block black">26</div>
+
+            <div class="block green">0</div>
+            <div class="block red">32</div>
+            <div class="block black">15</div>
+            <div class="block red">19</div>
+            <div class="block black">4</div>
+            <div class="block red">21</div>
+            <div class="block black">2</div>
+            <div class="block red">25</div>
+            <div class="block black">17</div>
+            <div class="block red">34</div>
+            <div class="block black">6</div>
+            <div class="block red">27</div>
+            <div class="block black">13</div>
+            <div class="block red">36</div>
+            <div class="block black">11</div>
+            <div class="block red">30</div>
+            <div class="block black">8</div>
+            <div class="block red">23</div>
+            <div class="block black">10</div>
+            <div class="block red">5</div>
+            <div class="block black">24</div>
+            <div class="block red">16</div>
+            <div class="block black">33</div>
+            <div class="block red">1</div>
+            <div class="block black">20</div>
+            <div class="block red">14</div>
+            <div class="block black">31</div>
+            <div class="block red">9</div>
+            <div class="block black">22</div>
+            <div class="block red">18</div>
+            <div class="block black">29</div>
+            <div class="block red">7</div>
+            <div class="block black">28</div>
+            <div class="block red">12</div>
+            <div class="block black">35</div>
+            <div class="block red">3</div>
+            <div class="block black">26</div>
+        </div>
+        <div style="display: grid; justify-content: center;">
+            <svg width="26" height="23" viewBox="0 0 26 23" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 0L25.9904 22.5L0.00961876 22.5L13 0Z" fill="white" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="horizontal" style="grid-template-columns: 2fr 2fr 1fr; justify-items: center;">
+        <div class="box">
+            <h4>Postaw zakład</h4>
+            <div class="vline"></div>
+            <div class="data">
+                <h4 style="color: #FFE500; font-family: 'Black Ops One'; width: 100%; text-align: center; ">Pozostało <span id="counter">38</span> sek.</h4>
+                <div class="rouletteboard">
+                    <div class="boardobject boardobjectgreen" style="display: grid; grid-area: zero; width: 40px;" onclick="onNumber(0);">0</div>
+                    <div class="numbers" style="grid-area: board;">
+                        <div class="boardobject boardobjectred" onclick="onNumber(3);">3</div>
+                        <div class="boardobject boardobjectblack"onclick="onNumber(6);">6</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(9);">9</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(12);">12</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(15);">15</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(18);">18</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(21);">21</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(24);">24</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(27);">27</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(30);">30</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(33);">33</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(36);">36</div>
+
+                        <div class="boardobject boardobjectblack" onclick="onNumber(2);">2</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(5);">5</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(8);">8</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(11);">11</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(14);">14</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(17);">17</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(20);">20</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(23);">23</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(26);">26</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(29);">29</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(32);">32</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(35);">35</div>
+
+                        <div class="boardobject boardobjectred" onclick="onNumber(1);">1</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(4);">4</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(7);">7</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(10);">10</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(13);">13</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(16);">16</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(19);">19</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(22);">22</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(25);">25</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(28);">28</div>
+                        <div class="boardobject boardobjectblack" onclick="onNumber(31);">31</div>
+                        <div class="boardobject boardobjectred" onclick="onNumber(34);">34</div>
+
+                    </div>
+                    <div class="boardobject boardobjectyellow" style="display: grid; grid-area: twoone1; width: 40px; height: 100%;" onclick="onTwoOne(1);">2-1</div>
+                    <div class="boardobject boardobjectyellow" style="display: grid; grid-area: twoone2; width: 40px; height: 100%; " onclick="onTwoOne(2);">2-1</div>
+                    <div class="boardobject boardobjectyellow" style="display: grid; grid-area: twoone3; width: 40px; height: 100%; " onclick="onTwoOne(3);">2-1</div>
+
+
+                    <div class="boardobject boardobjectblue" style="display: grid; grid-area: firsttwelve; width: 128px; height: 40px; " onclick="onTwelve(1);">1st 12</div>
+                    <div class="boardobject boardobjectblue" style="display: grid; grid-area: secondtwelve; width: 128px; height: 40px; " onclick="onTwelve(2);">2nd 12</div>
+                    <div class="boardobject boardobjectblue" style="display: grid; grid-area: thirdtwelve; width: 128px; height: 40px; " onclick="onTwelve(3);">3rd 12</div>
+
+                    <div class="boardobject boardobjectpurple" style="display: grid; grid-area: oneeighteen; width: 64px; height: 40px; " onclick="onEighteen(1);">1-18</div>
+                    <div class="boardobject boardobjectpurple" style="display: grid; grid-area: even; width: 64px; height: 40px; " onclick="onEven();">Even</div>
+                    <div class="boardobject boardobjectpurple" style="display: grid; grid-area: red; width: 64px; height: 40px; " onclick="onColor('red');"><div class="dot" style="background-color: #D92A2A;"></div></div>
+                    <div class="boardobject boardobjectpurple" style="display: grid; grid-area: black; width: 64px; height: 40px; " onclick="onColor('black');"><div class="dot" style="background-color: #000;"></div></div>
+                    <div class="boardobject boardobjectpurple" style="display: grid; grid-area: odd; width: 64px; height: 40px; " onclick="onOdd();">Odd</div>
+                    <div class="boardobject boardobjectpurple" style="display: grid; grid-area: nineteenthirtysix; width: 64px; height: 40px; " onclick="onEighteen(2);">19-36</div>
+
+                    <div class="boardobject boardobjectnothing" style="display: grid; grid-area: nothing; width: 100%; height: 80px; cursor: not-allowed;"></div>
+                    <div class="boardobject boardobjectnothing" style="display: grid; grid-area: nothing2; width: 100%; height: 80px; cursor: not-allowed;"></div>
+
+                </div>
+            </div>
+            <div class="vline"></div>
+            <div class="data">
+                <div class="placebet">
+
+                    <div class="money">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.9434 25.4349C7.56766 25.4349 2.39941 20.2667 2.39941 13.8909C2.39941 7.51517 7.56766 2.34692 13.9434 2.34692C20.3191 2.34692 25.4874 7.51517 25.4874 13.8909C25.4874 20.2667 20.3191 25.4349 13.9434 25.4349ZM13.9434 23.1261C15.1563 23.1261 16.3572 22.8872 17.4778 22.4231C18.5983 21.9589 19.6165 21.2786 20.4741 20.421C21.3317 19.5634 22.012 18.5452 22.4761 17.4247C22.9403 16.3042 23.1792 15.1032 23.1792 13.8903C23.1792 12.6775 22.9403 11.4765 22.4761 10.356C22.012 9.23542 21.3317 8.21728 20.4741 7.35966C19.6165 6.50204 18.5983 5.82174 17.4778 5.3576C16.3572 4.89346 15.1563 4.65457 13.9434 4.65457C11.4939 4.65457 9.14477 5.62762 7.41273 7.35966C5.68069 9.0917 4.70763 11.4409 4.70763 13.8903C4.70763 16.3398 5.68069 18.689 7.41273 20.421C9.14477 22.153 11.4939 23.1261 13.9434 23.1261ZM9.903 16.1997H16.2522C16.4053 16.1997 16.5521 16.1389 16.6603 16.0306C16.7686 15.9224 16.8294 15.7756 16.8294 15.6225C16.8294 15.4694 16.7686 15.3226 16.6603 15.2144C16.5521 15.1061 16.4053 15.0453 16.2522 15.0453H11.6346C10.8692 15.0453 10.1351 14.7412 9.59389 14.2C9.05267 13.6588 8.74861 12.9247 8.74861 12.1593C8.74861 11.3939 9.05267 10.6598 9.59389 10.1186C10.1351 9.57737 10.8692 9.27332 11.6346 9.27332H12.789V6.96452H15.0978V9.27332H17.9838V11.5821H11.6346C11.4815 11.5821 11.3347 11.6429 11.2265 11.7512C11.1182 11.8594 11.0574 12.0062 11.0574 12.1593C11.0574 12.3124 11.1182 12.4592 11.2265 12.5675C11.3347 12.6757 11.4815 12.7365 11.6346 12.7365H16.2522C17.0176 12.7365 17.7517 13.0406 18.2929 13.5818C18.8341 14.123 19.1382 14.8571 19.1382 15.6225C19.1382 16.3879 18.8341 17.122 18.2929 17.6632C17.7517 18.2044 17.0176 18.5085 16.2522 18.5085H15.0978V20.8173H12.789V18.5085H9.903V16.1997Z" fill="white" />
+                        </svg>
+                        <h5 style="font-family: 'Black Ops One', serif; font-size: 0.7em;">Dostępne środki</h5>
+                        <div class="myMoney" style="">@Model.MoneyAmount<span style="color: #FFE500;">ZŁ</span></div>
+
+                    </div>
+                    <div class="moneyplace">
+                        <button class="fastpickmoney" style="grid-area: bt1;" value="5" onclick="setMoney(5);">5 ZŁ</button>
+                        <button class="fastpickmoney" style="grid-area: bt2;" value="50" onclick="setMoney(50);">50 ZŁ</button>
+                        <button class="fastpickmoney" style="grid-area: bt3;" value="250" onclick="setMoney(250);">250 ZŁ</button>
+                        <button class="fastpickmoney" style="grid-area: bt4;" value="10" onclick="setMoney(10);">10 ZŁ</button>
+                        <button class="fastpickmoney" style="grid-area: bt5;" value="100" onclick="setMoney(100);">100 ZŁ</button>
+                        <button class="fastpickmoney" style="grid-area: bt6;" value="500" onclick="setMoney(500);">500 ZŁ</button>
+                        <input id="inputMoney" type="number" step="0.01" style="grid-area: input; outline: none; border-radius: 5px; border: none; background-color: #262A30; color: #fff; text-align: center; height: 50px;" name="Price" placeholder="WPROWADŹ KOWTĘ" />
+                        <button type="submit" onClick="sendMoneyClick();" class="fastpickmoney" style="grid-area: submit; color: #000; height: 50px; font-size: 0.8em; background: linear-gradient(rgba(82,171,51,1),rgba(112,255,0,1));">ZATWIERDŹ</button>
+                        <label for="Price" style="grid-area: info; font-size: 0.8em; text-align: center; color: #717171;">od 5 ZŁ do 5 TYŚ ZŁ.</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="vline"></div>
+        </div>
+        <div class="box" style="width: 90%;">
+            <h4>Postawione zakłady</h4>
+            <div class="vline"></div>
+            <div class="data"></div>
+            <div class="vline"></div>
+        </div>
+        <div class="box">
+            <h4>Ostatnie 10 losowań</h4>
+            <div class="vline"></div>
+            <div class="data" id="lastBets" style=" grid-row-gap: 10px; font-family: 'Black Ops One';">
+            </div>
+            <div class="vline"></div>
+        </div>
+    </section>
+
+    <form style="display: none; visibility: hidden; opacity: 0;" action="/RandomNumber/PlaceBet" method="post">
+        <input id="price" type="number" step="0.01" name="price" value="" required />
+        <input id="number" type="number" step="1" max="36" min="0" name="number" value="" />
+        <input type="number" step="1" max="36" min="0" name="IdZakladu" value="1" />
+        <input type="number" step="1" max="36" min="0" name="UserId" value="1" />
+        <input type="submit" value="submit" />
+    </form>
+
+
+</main>

@@ -1,0 +1,2 @@
+Artur;Leszczak;22;al.ok1@wp.pl;Haslo123;280,0
+Kamil;Leszczak;18;km.ok@wp.pl;haslo123;50,50

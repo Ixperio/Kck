@@ -1,0 +1,11 @@
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\KasynoBL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\KasynoBL.AssemblyInfoInputs.cache
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\KasynoBL.AssemblyInfo.cs
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\KasynoBL.csproj.CoreCompileInputs.cache
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\bin\Debug\net7.0\KasynoBL.deps.json
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\bin\Debug\net7.0\KasynoBL.dll
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\bin\Debug\net7.0\KasynoBL.pdb
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\KasynoBL.dll
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\refint\KasynoBL.dll
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\KasynoBL.pdb
+C:\Users\alok1\Desktop\STUDIA\SEM5\kck\KasynoBL\obj\Debug\net7.0\ref\KasynoBL.dll

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "GetInfo";
+}
+
+@model int
+
+<h1>Time left:</h1>
+<p>@Model</p>
+
+<script>
+    // Funkcja do pobierania nowej losowej liczby
+    function getRandomNumber() {
+        $.ajax({
+            url: '@Url.Action("GetInfo", "RandomNumber")',
+            type: 'GET',
+            success: function (data) {
+                $('#randomNumber').text(data);
+            }
+        });
+    }
+
+    // Uruchom funkcję co 45 sekund
+    setInterval(getRandomNumber, 45000);
+
+    // Wywołaj funkcję przy pierwszym załadowaniu strony
+    getRandomNumber();
+</script>

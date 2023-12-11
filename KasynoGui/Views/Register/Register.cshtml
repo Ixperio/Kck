@@ -1,0 +1,201 @@
+﻿@using KasynoGui.Models
+@model KasynoGui.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Zarejestruj";
+    ViewBag.Style = @Url.Content("~/Content/Register.css");
+}
+
+<style>
+    .cont2{
+        padding: 0;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        grid-template-areas: "photo form";
+    }
+    .contLogin {
+        height: 100%;
+        display: grid;
+        place-content: center;
+        width: 100%;
+        background-color: #000;
+        grid-area: form;
+    }
+    .contLogin > form {
+        color: #fff;
+        font-family: 'Pirata One';
+        font-size: 1.2em;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px;
+        place-content: center;
+        place-items: center;
+        width: max-content;
+    }
+
+    .contLogin > form > div {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .contLogin > form > h4 {
+        font-size: 2.5em;
+    }
+
+    .contLogin > form > p > a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .contLogin > form > p > a:hover {
+        color: #fff;
+    }
+
+    .contLogin > form > .line {
+        background-color: #fff;
+        height: 1px;
+        width: 100%;
+        content: '';
+        padding: 0;
+    }
+        .contLogin > form > .buttonsubmit {
+            padding: 10px 60px 10px 60px;
+            background-color: #52AB33;
+            color: #fff;
+            display: grid;
+            border-radius: 100px;
+            border: none;
+            outline: none;
+            transition: 0.12s;
+        }
+    .contLogin > form >  .buttonsubmit:hover {
+        background-color: green;
+        transition: 0.23s;
+    }
+        .contLogin > form > .box > .sect > .item > .textbox {
+            background-color: #1D1D1D;
+            outline: none;
+            height: 40px;
+            width: 250px;
+            border-radius: 20px;
+            border: none;
+            padding: 5px 15px 5px 15px;
+            color: #fff;
+            font-family: 'Roboto';
+            font-size: 0.7em;
+        }
+        .contLogin > form > .box > .sect > .item > .text-danger {
+            width: 250px;
+            line-break: auto;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .contLogin > form > .box > .sect > .item > .label {
+            padding-left: 20px;
+        }
+    .contPhoto {
+        background-image: url( @Url.Content("~/Content/Login/loginBack.png") );
+        background-position: center;
+        background-size: cover;
+        display: grid;
+        justify-content: right;
+        padding: 0;
+        margin: 0;
+        grid-template-columns: 45%;
+        width: 100%;
+        height: 100%;
+        grid-area: photo;
+    }
+    .contPhoto > .dark{
+        background: linear-gradient(-90deg,rgba(0,0,0,1), rgba(0,0,0,0));
+        content: "";
+    }
+    .box{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+    .box > .sect{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 30px;
+    }
+    .box > .sect > .item {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 5px;
+
+    }
+</style>
+<div class="contLogin">
+
+    @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Utwórz nowe konto</h4>
+        <div class="line"></div>
+        <div class="box">
+
+            <div class="sect">
+                <div class="item">
+                    @Html.LabelFor(m => m.Name, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "textbox" })
+                </div>
+                <div class="item">
+                    @Html.LabelFor(m => m.Surname, new { @class = "label" })
+
+                    @Html.TextBoxFor(m => m.Surname, new { @class = "textbox" })
+                </div>
+                <div class="item">
+                    @Html.LabelFor(m => m.Birthday, new { @class = "label" })
+
+                    <input type="date" placeholder="20.12.2023" name="Birthday" id="Birthday" required data-val="true" data-val-required="Pole Data urodzenia jest wymagane." class="textbox" />
+                </div>
+                <div class="item">
+                    @Html.LabelFor(m => m.Phone, new { @class = "label" })
+
+                    <input type="tel" pattern="^[0-9]{9}$" placeholder="123456789" name="Phone" id="Phone" required data-val="true" data-val-regex="Numer telefonu musi składać się z 9 cyfr." data-val-required="Pole Telefon kontaktowy jest wymagane." class="textbox"/>
+                </div>
+            </div>
+
+            <div class="sect">
+                <div class="item">
+                    @Html.LabelFor(m => m.Email, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "textbox" })
+                </div>
+                <div class="item">
+                    @Html.LabelFor(m => m.ConfirmEmail, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.ConfirmEmail, new { @class = "textbox" })
+                </div>
+                <div class="item">
+                    @Html.LabelFor(m => m.Password, new { @class = "label" })
+
+                    @Html.PasswordFor(m => m.Password, new { @class = "textbox" })
+                </div>
+                <div class="item">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "label" })
+
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "textbox" })
+                </div>
+            </div>
+
+
+        </div>
+
+        <input type="submit" value="Zarejestruj się" class="buttonsubmit"/>
+
+        <div class="line"></div>
+        <p>
+            @Html.ActionLink("Masz już konto ? - Przejdź do logowania!", "Login")
+        </p>
+    }
+
+</div>
+<div class="contPhoto">
+    <div class="dark"></div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

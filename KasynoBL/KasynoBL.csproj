@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Classes\Games\Enums\" />
+    <Folder Include="Repository\Controllers\" />
+    <Folder Include="Repository\Data\" />
+    <Folder Include="Repository\Sounds\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Games";
+}
+
+<style>
+    .header > .options > #agames > .underline {
+        width: 100%;
+        opacity: 1;
+    }
+    body{
+        bnackground-color: #000;
+    }
+    .cont2 {
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        height: 100%;
+        transition: grid-template-columns 0.3s;
+    }
+    .gameoption {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        place-content: center;
+        transition: 0.3s;
+        overflow: hidden;
+    }
+        .image {
+            width: 50vw;
+            height: 100vh;
+            content: '';
+            background-position: center;
+            background-size: cover;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            place-content: center;
+            filter: sepia(100%);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        #roulette{
+            background-image: url( @Url.Content("~/Content/Games/roulette.jpg") );
+        }
+        #blackjack {
+            background-image: url( @Url.Content("~/Content/Games/blackjack.png") );      
+        }
+        #roulette:hover{
+            transition: 0.3s;
+            transform: scale(1.1);
+            filter: none;
+        }
+        #blackjack:hover{
+            transition: 0.3s;
+            transform: scale(1.1);
+            filter: none;
+        }
+    .gameoption > .image > p {
+        background-color: #FFCB01;
+        padding: 30px 80px 30px 80px;
+        border-top-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        color: #000;
+        font-family: 'Pirata One';
+        font-size: 3em;
+        text-decoration: none;
+    }
+
+</style>
+
+<div class="gameoption" >
+    <a class="image" id="roulette" href="/games/roulette">
+        <p>Ruletka</p>
+    </a>
+</div>
+<div class="gameoption" >
+    <a class="image" id="blackjack" href="/games/blackjack">
+        <p>BlackJack</p>
+    </a>
+</div>

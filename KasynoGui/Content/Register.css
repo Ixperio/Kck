@@ -1,0 +1,23 @@
+﻿@media screen and (min-height: 420px) {
+    .contLogin > form {
+        transform: scale(0.3);
+    }
+}
+
+@media screen and (min-height: 620px) {
+    .contLogin > form {
+        transform: scale(0.6);
+    }
+}
+
+@media screen and (min-height: 800px) {
+    .contLogin > form {
+        transform: scale(1);
+    }
+}
+
+@media screen and (min-height: 1080px) {
+    .contLogin > form {
+        transform: scale(1.2);
+    }
+}
