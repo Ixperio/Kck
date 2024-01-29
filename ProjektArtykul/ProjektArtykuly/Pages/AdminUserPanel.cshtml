@@ -1,0 +1,90 @@
+﻿@page
+@model ProjektArtykuly.Pages.AdminUserPanelModel
+@{
+     ViewData["Title"] = "Admin User Panel";
+    ViewData["Css"] = "AdminUserPanelCss.css";
+}
+<div class="adminpage">
+    <h4 style="font-family: 'Bruno Ace'; font-size: 2.5vh; margin-top: 50px; margin-bottom: 50px; text-align: center;">PANEL ADMINISTRACYJNY</h4>
+    <div class="engagement">
+        <h3 style="font-family: 'Bruno Ace'; font-size: 2vh; color: #000;">Zarządzanie > użytkownikami</h3>
+       <div class="engagement-options">
+          <table>
+              <tr>
+                  <th>Id</th>
+                  <th>Zdjęcie</th>
+                  <th>Imię</th>
+                  <th>Nazwisko</th>
+                  <th>Email</th>
+                  <th>Hasło</th>
+                  <th>Rola</th>
+                  <th>Usuń konto</th>
+              </tr>
+
+                @{
+                    foreach(var usr in Model.users)
+                    {
+                        <tr>
+                        <td>@(usr.Id)</td>
+
+                        @if(usr.HavingAvatar)
+                        {
+                            <td><div class="userAvatar" style="background-image: url('../images/userimages/@(usr.Id).jpg'); height: 3vh; width: 3vh;"></div></td>
+                        }else{
+                                <td><div class="userAvatar" style="background-image: url('../images/userimages/0.jpg'); height: 3vh; width: 3vh;"></div></td>
+                            
+                        }
+
+                            <td title="@(usr.Name)">@(usr.Name)</td>
+                            <td title="@(usr.Surname)">@(usr.Surname)</td>
+                            <td title="@(usr.Email)">@(usr.Email)</td>
+                            <td title="@(usr.Password)">@(usr.Password)</td>
+                            <td class="role">
+                                <form method="post" asp-page-handler="UpdateRole">
+                                    <input name="id" value="@usr.Id" style="display: none;" />
+                                    <select name="updaterole">
+                             @if(usr.Rola.ToString() == "Admin")
+                             {
+                                        <option value="1" selected>Admin</option>
+                                        <option value="2">Redaktor</option>
+                                        <option value="3">User</option>
+                             }else if (usr.Rola.ToString() == "Redaktor"){
+                                        <option value="1">Admin</option>
+                                        <option value="2" selected>Redaktor</option>
+                                        <option value="3">User</option>
+                             }
+                             else if (usr.Rola.ToString() == "User"){
+                                     <option value="1">Admin</option>
+                            <option value="2">Redaktor</option>
+                                        <option value="3" selected>User</option>
+                                    }
+
+                                    </select>
+                                    <input type="submit" value="Zatwierdź" />
+                                </form>
+                            </td>
+                            <td class="delete" title="Usuniesz konto użytkownika">
+                                <form method="post" asp-page-handler="Delete">
+                                    <input name="id" value="@usr.Id" style="display: none;" />
+                                    <button type="submit" style="color: #fff; text-decoration: none; background: none; border: none; padding: 0; cursor: pointer;">
+                                        Usuń konto
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+            
+          </table>
+            <h3>@Model.error</h3>
+       </div>
+       <div class="button-options">
+            <a asp-page="Register" class="guzik">Dodaj konto</a>
+       </div>
+    </div>
+    <script>
+
+
+    </script>
+
+</div>

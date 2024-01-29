@@ -1,0 +1,57 @@
+﻿.page-container{
+    width: 40vw;
+    min-width: 400px;
+    display: grid;
+
+}
+h2 {
+    text-align: center;
+    padding-top: 5vh;
+    font-family: "Bruno Ace";
+    
+}
+form{
+    display: grid;
+    grid-template-columns: min-width;
+    justify-content: center;
+    justify-items: center;
+    padding-top: 3vh;
+}
+    form > input {
+        height: auto;
+        width: 40vw;
+        background-color: #ececec;
+        outline: none;
+        border: none;
+        padding: 1vh;
+    }
+    form > label{
+        width: 100%;
+        padding-left:2vh;
+        font-size: 1.6vh;
+        font-family: "Bruno Ace";
+        padding-top: 1vh;
+    }
+    form > textarea {
+        height: auto;
+        width: 40vw;
+        background-color: #ececec;
+        outline: none;
+        border: none;
+        padding: 0.5vh;
+        min-height: 250px;
+    }
+    form > input[type="submit"] {
+        font-family: "Bruno Ace";
+        font-size: 1.6vh;
+        padding: 1vh;
+        padding-left: 3vh;
+        padding-right: 3vh;
+        width: min-content;
+        outline: none;
+        border: none;
+        background-color: #8300EA;
+        color: #fff;
+        margin-top: 2vh;
+
+    }

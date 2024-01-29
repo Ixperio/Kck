@@ -1,0 +1,8 @@
+﻿
+.selector[id='4']{
+    height: 1.5px;
+    width: 100%;
+    transition: 0.15s;
+    content: '';
+    background-color: #8300EA;
+}

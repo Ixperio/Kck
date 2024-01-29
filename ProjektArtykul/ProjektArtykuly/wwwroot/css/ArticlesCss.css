@@ -1,0 +1,162 @@
+﻿
+.selector[id='2']{
+    height: 1.5px;
+    width: 100%;
+    transition: 0.15s;
+    content: '';
+    background-color: #8300EA;
+}
+.articlespage {
+    display: grid;
+    width: 100vw;
+    height: auto;
+    align-items: flex-start;
+    justify-items: center;
+    align-content: space-between;
+    margin-top: 2vh;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    padding-bottom: 10vh;
+}
+
+.search {
+    width: 15vw;
+    min-width: max-content;
+    display: grid;
+    grid-template-columns: min-content max-content;
+    align-items: center;
+    justify-items: left;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    margin-top: 2vh;
+    border-radius: 40px;
+    background-color: #eee;
+    position: relative;
+}
+
+    .search > svg {
+        margin-left: 1vh;
+    }
+
+    .search > input {
+        width: 100%;
+        outline: none;
+        background-color: transparent;
+        font-family: "Bruno Ace";
+        border: none;
+        color: #000;
+        padding-left: 2vh;
+    }
+
+.articles-sections {
+    width: 90vw;
+    height: min-content;
+    display: grid;
+    align-items: flex-start;
+    justify-items: center;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.article-section-name {
+    width: 100%;
+    padding-bottom: 2vh;
+    font-family: "Bruno Ace";
+    color: #240041;
+    font-size: 3vh;
+}
+
+.articlesBox {
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    width: 100%;
+    align-items: center;
+}
+.articlesBox[name="allArticles"]{
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    align-content: space-between;
+}
+
+.articleMini {
+    width: 26vw;
+    height: 14.9vw;
+    background-image: url(../images/articlesimages/1.jpg);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    content: '';
+    -webkit-box-shadow: 8px 8px 0px 0px #ECECEC;
+    -moz-box-shadow: 8px 8px 0px 0px #ECECEC;
+    box-shadow: 8px 8px 0px 0px #ECECEC;
+    display: grid;
+    place-items: center;
+}
+
+.article-title-section {
+    font-size: 1.6vh;
+    font-family: "Bruno Ace";
+    display: grid;
+    text-align: center;
+    color: #240041;
+    place-items: center;
+    white-space: normal;
+    max-width: 20vw;
+    width: max-content;
+    height: min-content;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    text-align: center;
+    background-color: rgba(255,255,255,0.9);
+    text-align: left;
+    height: auto;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    transition: 0.15s;
+}
+.article-description-mini {
+    display: none;
+}
+
+.articleMini:hover > .article-description-mini {
+    font-size: 1.6vh;
+    font-family: "Inter";
+    display: grid;
+    text-align: center;
+    color: #240041;
+    place-items: center;
+    white-space: normal;
+    max-width: 24vw;
+    width: max-content;
+    height: min-content;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    text-align: center;
+    background-color: rgba(255,255,255,0.9);
+    text-align: left;
+    height: auto;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    transition: 0.3s;
+    transition-delay: 0.3s;
+}

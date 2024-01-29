@@ -1,0 +1,393 @@
+﻿
+.selector[id='2']{
+    height: 1.5px;
+    width: 100%;
+    transition: 0.15s;
+    content: '';
+    background-color: #8300EA;
+}
+
+.articlespage {
+    display: grid;
+    width: 100vw;
+    height: auto;
+    align-items: flex-start;
+    justify-items: center;
+    align-content: space-between;
+    margin-top: 10vh;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    margin-bottom: 10vh;
+}
+
+.article-container {
+    width: 50vw;
+    height: auto;
+    display: grid;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: space-around;
+}
+    .article-container > h2{
+        font-family: "Bruno Ace";
+        color: #000;
+        padding-top: 2vh;
+    }
+    .stroke {
+        width: 90%;
+        height: 2px;
+        background-color: #8300EA;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        margin-left: 5%;
+    }
+
+h1 {
+    font-family: "Bruno Ace";
+    color: #000;
+    font-size: 3.5vh;
+    padding-bottom :2vh;
+}
+
+p {
+    font-family: "Inter";
+    font-size: 1.6vh;
+    color: #000;
+    text-indent: 20px;
+    text-align: justify;
+    padding-bottom: 1vh;
+}
+
+.article-info {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin-left:10%;
+}
+
+.author-info {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 2vh;
+    place-items: center;
+}
+
+.author-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid #e1e1e1;
+    box-sizing: border-box;
+    width: 5vh;
+    height: 5vh;
+}
+
+.author-more-info {
+    display: grid;
+    align-items: center;
+    justify-items: left;
+    grid-row-gap: 0.5vh;
+}
+
+.author-name {
+    color: #000;
+    font-family: "Bruno Ace";
+    font-size: 1.5vh;
+    text-align: left;
+    width: max-content;
+}
+
+.article-date {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 2vh;
+}
+
+.article-image {
+    width: 100%;
+    height: 30vw;
+    min-height: inherit;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: default;
+    content: '';
+}
+
+.article-date-numbers {
+    color: #8300EA;
+    font-family: "Bruno Ace";
+    font-size: 1.4vh;
+    text-align: left;
+}
+.marks {
+    color: #8300EA;
+    text-align: right;
+    text-indent: 0.5vh;
+    float: right;
+    padding-right: 0.5vh;
+    font-size: 1.5vh;
+    font-family: "Bruno Ace";
+}
+.coment{
+    background-color: #EDEDED;
+    width: 85%;
+    height: auto;
+    margin-left: 7.5%;
+    position: relative;
+    padding-top: 1vh;
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 0.5vh;
+    margin-top: 5vh;
+}
+.coment-author-image {
+    width: 5vh;
+    height: 5vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+}
+.coment-author-personal-data{
+    font-family: "Bruno Ace";
+    color: #8F8F8F;
+    font-size: 1.2vh;
+    margin-left: 6vh;
+}
+.coment-description{
+    font-family: "Inter";
+    font-size: 1.6vh;
+    color: #000;
+    text-indent: 20px;
+    text-align: justify;
+    padding-left: 6vh;
+    padding-right: 2vh;
+    height: auto;
+    width: 100%;
+
+}
+.content-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1vh;
+}
+.content-details-box{
+    display: grid;
+    grid-template-columns: min-content min-content;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+.coment-creation-date{
+    display: grid;
+    grid-template-columns: min-content max-content;
+    grid-column-gap: 1vh;
+    justify-content: right;
+    align-items: flex-start;
+    height: min-content;
+    margin-left: 6vh;
+}
+    .coment-creation-date > p {
+        font-size: 1.2vh;
+        font-family: "Bruno Ace";
+        color: #D59FFF;
+        height: min-content;
+        padding: 0;
+        text-indent: 0px;
+        margin-bottom: 0;
+        padding: 0;
+        height: min-content;
+    }
+.content-details-mark{
+    justify-items: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1vh;
+    height: min-content;
+    place-items: center;
+    padding-right: 2vh;
+}
+.content-details-mark > p {
+        color: #B35CF7;
+        font-family: "Bruno Ace";
+        font-size: 1.5vh;
+       height: min-content;
+       margin: 0;
+       padding: 0;
+       width: min-content;
+}
+.content-details-box-left{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: left;
+    align-content: center;
+    height: min-content;
+}
+.coment-marks{
+   display: grid;
+   justify-content: right;
+   height: min-content;
+   width: 100%;
+   grid-column-gap: 3px;
+   grid-template-columns: min-content min-content;
+}
+.coment-marks-likes {
+    background-color: #B35CF7;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 0.5vh;
+    padding-top:0.5vh;
+    padding-bottom:0.5vh;
+    padding-right:1vh;
+    padding-left:1vh;
+    color: #fff;
+    font-family: "Bruno Ace";
+    font-size: 1.4vh;
+    place-items: center;
+    min-width: 6vh;
+    cursor: pointer;
+
+}
+    .coment-marks-likes> svg {
+        margin-top: 0px;
+        transition: 0.15s;
+    }
+.coment-marks-likes:hover > svg{
+    margin-top: -5px;
+    transition: 0.3s;
+}
+.article-container > h3{
+    width: 100%;
+    height: min-content;
+    padding-top: 4vh;
+    padding-bottom: 1vh;
+    font-family: "Bruno Ace";
+    font-size: 2.5vh;
+    color: #000;
+    text-align: left;
+}
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    justify-items: center;
+    width: 100%;
+    align-items: flex-start;
+    padding-bottom: 4vh;
+}
+.tag {
+    font-size: 1.5vh;
+    color: #fff;
+    background-color: #D59FFF;
+    border-radius: 100px;
+    width: min-content;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 2.5vh;
+    padding-right: 2.5vh;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: default;
+    margin-top: 20px;
+    font-family: "Bruno Ace";
+}
+.article-container{
+    justify-content: center;
+}
+.stars > form {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-content: center;
+    grid-column-gap: 2vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    width: min-content;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+    .stars > form > svg {
+        transition: 0.15s;
+        fill: #D6D6D6;
+        cursor: pointer;
+    }
+
+        .stars > form > svg:hover {
+            fill: #8300EA;
+        }
+
+            .stars > form > svg:hover ~ svg {
+                fill: #8300EA;
+            }
+.userComent {
+    background-color: #EDEDED;
+    width: 90%;
+    min-height: 10vh;
+    display: grid;
+    justify-content: center;
+    border-bottom-right-radius: 20px;
+    grid-template-columns: 100%;
+    grid-row-gap: 1vh;
+    margin-left: 5%;
+}
+    .userComent > textarea {
+        border: none;
+        color: #000;
+        font-family: "Inter";
+        font-size: 1.2vh;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        width: 100%;
+        height: auto;
+        text-indent: 10px;
+        padding-right: 2vh;
+        padding-top: 2vh;
+        padding-left: 2vh;
+    }
+.userComent > div{
+    display: grid;
+    grid-template-columns: min-content min-content;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+    .userComent > div > p {
+        font-family: "Inter";
+        font-size: 1vh;
+        color: #8F8F8F;
+        font-style: italic;
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+    }
+    .userComent > div > input {
+        font-family: "Bruno Ace";
+        font-size: 1.4vh;
+        color: #fff;
+        background-color: #B35CF7;
+        border: none;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        padding-left: 3vh;
+        padding-right: 3vh;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        
+    }

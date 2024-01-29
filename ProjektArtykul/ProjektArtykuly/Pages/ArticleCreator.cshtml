@@ -1,0 +1,17 @@
+﻿@page
+@model ProjektArtykuly.Pages.ArticleCreatorModel
+@{
+    ViewData["Title"] = "Kreator artykułów";
+    ViewData["Css"] = "ArticleCreatorCss.css";
+}
+
+    <div class="page-container">
+        <h2>Kreator artykułu</h2>
+        <form method="post" asp-page-handler="Article" >
+            <label for="title">Tytuł artykułu(max 50 znaków)</label>
+            <input type="text" name="title" maxlength="50" required/>
+            <label for="intro">Wstęp do artykułu(max 500 znaków)</label>
+            <textarea type="text" name="intro" maxlength="500" required></textarea>
+            <input type="submit" value="Dalej" />
+        </form>
+    </div>

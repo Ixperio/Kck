@@ -1,0 +1,46 @@
+﻿@page
+@model ProjektArtykuly.Pages.ArticleCreateSectionModel
+@{
+    ViewData["Title"] = "Kreator artykułów";
+    ViewData["Css"] = "ArticleSectionCreatorCss.css";
+    
+}
+
+    <div class="page-container" style="justify-items: center;">
+        <h2>Sekcje</h2>
+    @{
+        if(Model.ArticleSection.Count() > 0)
+        {
+            foreach(var section in Model.ArticleSection)
+            {
+                <form method="post" asp-page-handler="UpdateSection">
+                    <input type="number" value="@(Model.articleId)" style="display: none;" name="articleId" />
+                    @{
+                        foreach(var paragraf in section.Paragraphs)
+                        {
+                            <input type="number" name="idParagrafu" value="@(paragraf.id)" style="display: none;" />
+                            <label for="title">Tytuł paragrafu(max 80 znaków) (opcjonalnie)</label>
+                            <input type="text" name="Title" value="@(paragraf.title)" />
+                            <label for="intro">Tresć paragrafu(max 1000 znaków)</label>
+                            <textarea type="text" name="Description">@(paragraf.description)</textarea>
+                        }
+                    }
+                    <input type="submit" value="zapisz"/>
+                </form>
+            }
+        }
+    }
+        <h2>Dodaj kolejną sekcję</h2>
+        <form method="post" asp-page-handler="AddSection" style="padding-bottom: 5vh;" >
+            <input type="number" value="@(Model.articleId)" style="display: none;" name="articleId" />
+            <label for="title">Tytuł paragrafu(max 80 znaków) (opcjonalnie)</label>
+            <input type="text" name="Title" maxlength="80"/>
+            <label for="intro">Tresć paragrafu(max 1000 znaków)</label>
+            <textarea type="text" name="Description" maxlength="1000" required></textarea>
+            <input type="submit" value="Dodaj" />
+        </form>
+
+    <a asp-page="ArticleCreateTag?articleId=@(Model.articleId)" style="margin-bottom: 5vh; text-decoration: none; 
+    color: #fff;background-color: #8300ea; width: max-content; padding: 1vh; padding-left: 3vh; padding-right: 3vh; font-size: 1.4vh; font-family: 'Bruno Ace';">Przejdź dalej</a>
+
+    </div>

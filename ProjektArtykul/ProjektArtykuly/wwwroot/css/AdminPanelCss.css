@@ -1,0 +1,66 @@
+﻿.adminpage{
+    display: grid;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: space-around;
+}
+.engagement {
+    display: grid;
+    width: min-content;
+    height: min-content;
+    padding: 2vh;
+    padding-left: 20vh;
+    padding-right: 20vh;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.15);
+    position: relative;
+}
+.engagement > h3{
+    font-size: 2vh;
+    color: #000;
+    width: auto;
+    font-family: "Bruno Ace";
+    text-align: left;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+.engagement-options{
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-column-gap: 5vh;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+    .engagement-options > .option {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: space-evenly;
+        background-color: #B35CF7;
+        height: 12vw;
+        width: 12vw;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.15s;
+        text-decoration: none;
+    }
+    .engagement-options > .option > h3 {
+        font-size: 1.5em;
+        color: #fff;
+        font-family: "Bruno Ace";
+        width: 100%;
+        text-align: center;
+        height: auto;
+    }
+    .engagement-options > .option:hover {
+        background-color: #8300EA;
+        transition: 0.25s;
+    }

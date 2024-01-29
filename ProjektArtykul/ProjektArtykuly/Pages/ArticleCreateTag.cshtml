@@ -1,0 +1,40 @@
+﻿@page
+@model ProjektArtykuly.Pages.ArticleCreateTagModel
+@{
+    ViewData["Title"] = "Kreator artykułów";
+    ViewData["Css"] = "ArticleTagCreatorCss.css";
+    
+}
+
+    <div class="page-container" style="justify-items: center;">
+            <h2>Tagi</h2>
+    
+        <table>
+        <tr>
+            <th>Nazwa tagu</th>
+            <th>Usuń</th>
+        </tr>
+        @{
+            foreach (var tag in Model.tags)
+            {
+                <tr>
+                    <td>@(tag.Name)</td>
+                    <td>
+                        <form method="post" asp-page-handler="DeleteTag">
+                            <input type="number" value="@(Model.articleId)" name="articleId" style="display: none;" />
+                            <input type="number" value="@(tag.Id)" name="tagId" />
+                            <input type="submit" value="Usuń">
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        </table>
+    <form method="post" asp-page-handler="AddTag">
+        <input type="text" name="tagName" maxlength="32" />
+        <input type="number" name="articleId" style="display: none;"/>
+        <input type="submit" value="Dodaj"/>
+        </form>
+
+
+    </div>

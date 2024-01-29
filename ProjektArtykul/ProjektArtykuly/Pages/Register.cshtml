@@ -1,0 +1,39 @@
+﻿@page
+@model ProjektArtykuly.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Rejestracja";
+    ViewData["Css"] = "RegisterCss.css";
+}
+<div class="loginpage">
+    <form method="post" asp-page-handler="Register">
+        <h1><span style="color: #8300EA;">IT</span>Xplorers</h1>
+        <h3>Rejestracja w systemie</h3>
+        <div class="container">
+            <div class="group">
+                <label for="name">Imię</label>
+                <input name="name" type="text" placeholder="Jan" required maxsize="256" />
+            </div>
+            <div class="group">
+                <label for="surname">Nazwisko</label>
+                <input name="surname" type="text" placeholder="Kowalski" required maxsize="256" />
+            </div>
+            <div class="group">
+                <label for="email">Email</label>
+                <input name="email" type="email" placeholder="jan.kowalski@example.com" required maxsize="256" />
+            </div>
+            <div class="group">
+                <label for="emailconfirm">Potwierdź email</label>
+                <input name="emailconfirm" type="email" placeholder="jan.kowalski@example.com" required maxsize="256" />
+            </div>
+            <div class="group">
+                <label for="password">Hasło</label>
+                <input name="password" type="password" placeholder="********" required minsize="8" maxsize="256" />
+            </div>
+            <div class="group">
+                <label for="passwordconfirm">Potwierdź hasło</label>
+                <input name="passwordconfirm" type="password" placeholder="********" required minsize="8" maxsize="256" />
+            </div>
+        </div>
+        <input type="submit" value="Zarejestruj" />
+    </form>
+</div>

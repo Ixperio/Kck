@@ -1,0 +1,67 @@
+﻿@page
+@model ProjektArtykuly.Pages.ArticlesModel
+@{
+     ViewData["Title"] = "Artykuły";
+    ViewData["Css"] = "ArticlesCss.css";
+}
+<div class="articlespage">
+
+    <!--Search bar-->
+    <div class="search">
+        <svg width="2vh" height="2vh" fill="#8300EA" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="m18.031 16.617 4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617Zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15Z"></path>
+        </svg>
+        <input asp-route="" placeholder="Wyszukaj artykuł"/>
+    </div>
+
+    <!--Articles sections-->
+    <div class="articles-sections">
+        <h2 class="article-section-name">Najnowsze artykuły</h2>
+        <div class="articlesBox">
+            @foreach (var item in Model.NewestData)
+            {
+                <a class="articleMini" style="background-image: url('../images/articlesimages/@(item.id).jpg'); text-decoration: none;" href="/Article?id=@(item.id)">
+                    <div class="article-title-section">@item.title</div>
+                    <div class="article-description-mini">
+                            @(item.intro)
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="articles-roll-bar-buttons"></div>
+
+    </div>
+    <div class="articles-sections">
+        <h2 class="article-section-name">Najpopularniejsze w tym tygodniu</h2>
+        <div class="articlesBox">
+            @foreach (var item in Model.BestData)
+            {
+                <a class="articleMini" style="background-image: url('../images/articlesimages/@(item.id).jpg'); text-decoration: none;" href="/Article?id=@(item.id)">
+                    <div class="article-title-section">@item.title</div>
+                    <div class="article-description-mini">
+                            @(item.intro)
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="articles-roll-bar-buttons"></div>
+
+    </div>
+    <div class="articles-sections">
+        <h2 class="article-section-name">Wszystkie artykuły</h2>
+        <div class="articlesBox" name="allArticles">
+            @foreach (var item in Model.AllData)
+            {
+                <a class="articleMini" style="background-image: url('../images/articlesimages/@(item.id).jpg'); text-decoration: none;" href="/Article?id=@(item.id)">
+                    <div class="article-title-section">@item.title</div>
+                    <div class="article-description-mini">
+                             @(item.intro)
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="articles-roll-bar-buttons"></div>
+
+    </div>
+
+</div>

@@ -1,0 +1,187 @@
+﻿@page
+@model ProjektArtykuly.Pages.ArticleModel
+@{
+    ViewData["Title"] = "Artykuł";
+    ViewData["Css"] = "ArticleCss.css";
+    ViewData["Script"] = "Article.js";
+}
+@{
+    DateTime dataArt = Model.JsonData.creationDate;
+
+    string dataFormatHour = dataArt.ToString("HH");
+    string dataFormatYear = dataArt.ToString("yyyy");
+    string dataFormatMonth= dataArt.ToString("MM");
+    string dataFormatDay= dataArt.ToString("dd");
+    string dataFormatMinute= dataArt.ToString("mm");
+    int avatarId = 0;
+    bool isHavingAvatar = Model.JsonData.author.havingavatar;
+
+    
+    if (isHavingAvatar)
+    {
+        avatarId = Model.JsonData.author.id;
+    } 
+}
+
+<div class="articlespage">
+    <div class="article-container">
+        <h1>@(Model.JsonData.title)</h1>
+        <p>@(Model.JsonData.intro)</p>
+    <div class="stroke"></div>
+    <div class="article-info" >
+        <div class="author-info">
+            <div class="author-image" style="background-image: url('../images/userimages/@(avatarId).jpg');"></div>
+            <div class="author-more-info">
+                    <div class="author-name">@(Model.JsonData.author.name) @(Model.JsonData.author.surname)</div>
+                <div class="article-date">
+                     <svg width="2vh" height="2vh" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.8333 3.50008H24.5C24.8094 3.50008 25.1062 3.623 25.325 3.84179C25.5437 4.06058 25.6667 4.35733 25.6667 4.66675V23.3334C25.6667 23.6428 25.5437 23.9396 25.325 24.1584C25.1062 24.3772 24.8094 24.5001 24.5 24.5001H3.49999C3.19058 24.5001 2.89383 24.3772 2.67504 24.1584C2.45624 23.9396 2.33333 23.6428 2.33333 23.3334V4.66675C2.33333 4.35733 2.45624 4.06058 2.67504 3.84179C2.89383 3.623 3.19058 3.50008 3.49999 3.50008H8.16666V1.16675H10.5V3.50008H17.5V1.16675H19.8333V3.50008ZM23.3333 12.8334H4.66666V22.1667H23.3333V12.8334ZM17.5 5.83341H10.5V8.16675H8.16666V5.83341H4.66666V10.5001H23.3333V5.83341H19.8333V8.16675H17.5V5.83341ZM6.99999 15.1667H9.33333V17.5001H6.99999V15.1667ZM12.8333 15.1667H15.1667V17.5001H12.8333V15.1667ZM18.6667 15.1667H21V17.5001H18.6667V15.1667Z" fill="#B35CF7" />
+                     </svg>
+
+                        <div class="article-date-numbers" style="display: gird; align-items: center; font-size: 1.2vh;">@(dataFormatDay)/@(dataFormatMonth)/@(dataFormatYear) @(dataFormatHour):@(dataFormatMinute)</div>
+                    </div>
+            </div>
+            </div>
+            <div class="marks">Średnia ocen - @(Model.JsonData.markmean)/5
+
+                <div class="viewers">Wyświetleń : @(Model.JsonData.viewers)</div>
+            </div>
+    </div>
+    <div class="article-image" style="background-image: url('../images/articlesimages/@(Model.JsonData.id).jpg');"></div>
+        @{
+            foreach(var item in Model.JsonData.sekcje)
+            {
+                foreach(var par in item.articleParagraph)
+                {
+                    <h2>@(par.title)</h2>
+                    <p>@(par.description)</p>
+                }
+               
+            }
+        }
+        <h6 style="width: 100%; text-align: center; font-family: 'Inter'; color: #666; font-size: 1.2vh; font-weight: 300; padding-top: 2vh;"><i>(Koniec artykułu)</i></h6>
+    <h3>Tagi</h3>
+    <div class="tag-container">
+        @{
+            foreach(var items in Model.JsonData.tagi)
+            {
+                
+                <div class="tag">@(items.name)</div>
+
+            }
+        }
+        </div>
+        @{
+            if(Model.isLogged == true)
+            {
+            <h3> Oceń artykuł </h3>
+                <div class="stroke"></div>
+                <div class="stars">
+                    <form method="post" >
+                    <svg name="5" width="3vh" height="3vh" fill="#D6D6D6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17-5.878 3.59 1.598-6.7-5.23-4.48 6.865-.55L12 2.5l2.645 6.36 6.866.55-5.23 4.48 1.597 6.7L12 17Z"></path>
+                    </svg>
+                    <svg name="4" width="3vh" height="3vh" fill="#D6D6D6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17-5.878 3.59 1.598-6.7-5.23-4.48 6.865-.55L12 2.5l2.645 6.36 6.866.55-5.23 4.48 1.597 6.7L12 17Z"></path>
+                    </svg>
+                    <svg name="3" width="3vh" height="3vh" fill="#D6D6D6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17-5.878 3.59 1.598-6.7-5.23-4.48 6.865-.55L12 2.5l2.645 6.36 6.866.55-5.23 4.48 1.597 6.7L12 17Z"></path>
+                    </svg>
+                    <svg name="2" width="3vh" height="3vh" fill="#D6D6D6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17-5.878 3.59 1.598-6.7-5.23-4.48 6.865-.55L12 2.5l2.645 6.36 6.866.55-5.23 4.48 1.597 6.7L12 17Z"></path>
+                    </svg>
+                    <svg name="1" width="3vh" height="3vh" fill="#D6D6D6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 17-5.878 3.59 1.598-6.7-5.23-4.48 6.865-.55L12 2.5l2.645 6.36 6.866.55-5.23 4.48 1.597 6.7L12 17Z"></path>
+                    </svg>
+                    <input type="submit" style="display: none;"/>
+                    </form>
+                </div>
+                <div class="stroke"></div>
+                <h3>Napisz komentarz</h3>
+                <form method="post" asp-page-handler="Coment" class="userComent">
+                    <input name="id" value="@Model.JsonData.id" style="display: none;" type="number"/>
+                    <textarea maxlength="500" placeholder="Napisz komentarz" onclick="getCommentLength();" name="comenttext"></textarea>
+                    <div><p>0/500</p><input type="submit" value="Skomentuj" /></div>
+                </form>
+               
+               
+            }
+        }
+  
+    <h3>Komentarze</h3>
+        @{
+            foreach(var items in Model.JsonData.coments)
+            {
+                DateTime data = items.creationDate;
+
+                string dataFormatHour1 = data.ToString("HH");
+                string dataFormatYear1 = data.ToString("yyyy");
+                string dataFormatMonth1= data.ToString("MM");
+                string dataFormatDay1= data.ToString("dd");
+                string dataFormatMinute1= data.ToString("mm");
+                bool havingavatar1 = items.author.havingavatar;
+                int avatarId1 = 0;
+                if (havingavatar1)
+                {
+                    avatarId1 = items.author.id;
+                }
+
+                <div class="coment">
+                    <div class="coment-author-image" style="background-image: url('../images/userimages/@(avatarId1).jpg');"></div>
+                    <div class="coment-details">
+                        <div class="content-details-box">
+                            <div class="content-details-box-left">
+                            <div class="coment-author-personal-data">@(items.author.name) @(items.author.surname)</div>
+                            <div class="coment-creation-date">
+                                <svg width="1.5vh" height="1.5vh" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.8333 3.49984H24.5C24.8094 3.49984 25.1062 3.62275 25.325 3.84155C25.5438 4.06034 25.6667 4.35708
+25.6667 4.6665V23.3332C25.6667 23.6426 25.5438 23.9393 25.325 24.1581C25.1062 24.3769 24.8094 24.4998 24.5 24.4998H3.5C3.19058 24.4998 2.89384 
+24.3769 2.67504 24.1581C2.45625 23.9393 2.33334 23.6426 2.33334 23.3332V4.6665C2.33334 4.35708 2.45625 4.06034 2.67504 3.84155C2.89384 3.62275 
+3.19058 3.49984 3.5 3.49984H8.16667V1.1665H10.5V3.49984H17.5V1.1665H19.8333V3.49984ZM23.3333 12.8332H4.66667V22.1665H23.3333V12.8332ZM17.5 
+5.83317H10.5V8.1665H8.16667V5.83317H4.66667V10.4998H23.3333V5.83317H19.8333V8.1665H17.5V5.83317ZM7 15.1665H9.33334V17.4998H7V15.1665ZM12.8333
+15.1665H15.1667V17.4998H12.8333V15.1665ZM18.6667 15.1665H21V17.4998H18.6667V15.1665Z" fill="#D59FFF" />
+                                </svg>
+                                    <p >@(dataFormatYear1)/@(dataFormatMonth1)/@(dataFormatDay1) @(dataFormatHour1):@(dataFormatMinute1)</p>
+                                <div>
+                                </div>   
+                            </div>
+                          </div>
+                            <div class="content-details-mark">
+                                <p style="display: grid; grid-template-columns: max-content min-content; align-items: center;">@{
+                                        if (items.author.mark == null || items.author.mark == 0)
+                                        {
+                                            <span style="font-size: 1.3vh;">Brak oceny artykułu</span>
+                                        }
+                                        else
+                                        {
+                                            <span style="font-size: 1.3vh;">Ocena artykułu - </span>
+                                            @(items.author.mark)
+                                        }
+                                    }</p>
+                                <svg width="1.5vh" height="1.5vh" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17L6.12199 20.59L7.71999 13.89L2.48999 9.41L9.35499 8.86L12 2.5L14.645 8.86L21.511 9.41L16.281 13.89L17.878 20.59L12 17Z" fill="#B35CF7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coment-description">@(items.description)</div>
+                    <div class="coment-marks">
+                        <div class="coment-marks-likes">
+                            <svg width="2vh" height="2vh" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.5012 5.47243C15.8818 4.23655 17.6834 3.5764 19.5356 3.62764C21.3879 3.67888 23.1502 4.43762 24.4603 5.74793C25.7694 7.05679 26.5282 8.81679 26.5812 10.6672C26.6342 12.5175 25.9774 14.3181 24.7455 15.6998L14.4988 25.9609L4.25457 15.6998C3.02117 14.3174 2.36377 12.5153 2.41734 10.6634C2.47091 8.81155 3.23138 7.05046 4.54263 5.74169C5.85388 4.43291 7.6164 3.67577 9.46836 3.6257C11.3203 3.57563 13.1212 4.23643 14.5012 5.47243Z" fill="white" />
+                            </svg>
+
+                        @(items.likes)</div>
+                        <div class="coment-marks-likes">
+                            <svg width="2vh" height="2vh" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.39302 1.67969L25.607 23.8961L23.8984 25.6047L19.3708 21.0771L14.5 25.9587L4.25335 15.6964C3.06237 14.3603 2.40766 12.631 2.41524 10.8412C2.42283 9.05147 3.09217 7.32776 4.29444 6.0019L1.68323 3.39069L3.39302 1.67969ZM24.4603 5.74573C25.7694 7.05458 26.5282 8.81459 26.5812 10.665C26.6342 12.5153 25.9774 14.3159 24.7455 15.6976L22.7699 17.6744L8.77252 3.67827C9.79983 3.54965 10.8428 3.64307 11.8309 3.95221C12.819 4.26136 13.7292 4.77903 14.5 5.47023C15.8807 4.23399 17.6825 3.57362 19.535 3.62486C21.3876 3.6761 23.1501 4.43506 24.4603 5.74573Z" fill="white" />
+                            </svg>
+
+                        @(items.dislikes)</div>
+                    </div>
+                </div>
+            }
+        }
+        
+    </div>
+</div>

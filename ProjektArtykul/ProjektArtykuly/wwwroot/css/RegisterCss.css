@@ -1,0 +1,115 @@
+﻿.loginpage {
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+    align-content: space-around;
+    position: relative;
+}
+.loginpage > form {
+        height: auto;
+        width: 40vw;
+        -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
+        display: grid;
+        grid-row-gap: 1vh;
+        justify-content: space-around;
+        align-content: space-around;
+        justify-items: center;
+        align-items: center;
+        z-index: 3;
+        position: absolute;
+        grid-template-columns: 80%;
+        padding-top: 8vh;
+        padding-bottom: 8vh;
+    }
+.loginpage > form > h1 {
+    font-size: 3vh;
+    color: #000;
+    font-family: "Bruno Ace";
+    width: 100%;
+    text-align: center;
+}
+.loginpage > form > h3 {
+    font-size: 1.8vh;
+    color: #000;
+    font-family: "Bruno Ace";
+    width: 100%;
+    text-align: center;
+}
+.loginpage > form > .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2vh;
+    grid-row-gap: 0.5vh;
+    place-content: center;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: center;
+}
+    .loginpage > form > .container > .group{
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        align-items: center;
+        width: 100%;
+
+    }
+    .loginpage > form > .container > .group > input {
+        background-color: #EFEFEF;
+        height: 60px;
+        width: 100%;
+        border: none;
+        color: #000;
+        outline: none;
+        font-family: "Inter";
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    .loginpage > form > .container >.group> label {
+        color: #000;
+        font-size: 1.6vh;
+        font-family: "Bruno Ace";
+        padding-bottom: 0;
+        margin-bottom: 0;
+        padding-top: 2vh;
+        text-align: left;
+        width: 90%;
+        
+    }
+.loginpage > form > input[type="submit"] {
+    width: min-content;
+    height: min-content;
+    font-size: 1.8vh;
+    font-family: "Bruno Ace";
+    color: #fff;
+    background-color: #8300EA;
+    padding-left: 7vh;
+    padding-right: 7vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 4vh;
+    border: none;
+}
+    .loginpage > form > input[type="submit"]:hover {
+        padding-top: 1.7vh;
+        padding-bottom: 2.3vh;
+        transition: 0.2s;
+    }
+.loginpage > form > a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5vh;
+    text-align: center;
+    margin-top: 3vh;
+    cursor: pointer;
+    font-family: "Bruno Ace";
+}

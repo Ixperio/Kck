@@ -1,0 +1,39 @@
+﻿@page
+@model ProjektArtykuly.Pages.AccountModel
+@{
+    ViewData["Title"] = "Twoje Konto";
+    ViewData["Css"] = "AccountCss.css";
+
+    int avimage = 0;
+    if (Model.userModel.havingavatar)
+    {
+        avimage = Model.userModel.id;
+    }
+}
+<div class="accountpage">
+    <div class="engagement">
+        <h3 style="font-family: 'Bruno Ace'; font-size: 2vh; color: #000; width: 100%; text-align: center;">Twoje konto</h3>
+        <div class="avatarEngagement" style="background-image: url('../images/userimages/@(avimage).jpg'); height: 10vh; width: 10vh;"></div>    
+        <a asp-page="ChangeAvatar">Zmień avatar</a>
+        <div class="engagement-info">
+            <div>
+                <h4>Imię</h4>
+                <p>@Model.userModel.name</p>
+            </div>
+            <div>
+                <h4 style="text-align: center;">Opcje</h4>
+            </div>
+            <div>
+                <h4>Nazwisko</h4>
+                <p>@Model.userModel.surname</p>
+            </div>
+            <a style="color: #fff;" asp-page="ChangeEmail">Zmień email</a>
+            <div>
+                <h4>Email</h4>
+                <p>@Model.userModel.email</p>
+            </div>
+            <a style="color: #fff;" asp-page="ChangePass">Zmień hasło</a>
+        </div>
+       </div>
+    </div>
+</div>

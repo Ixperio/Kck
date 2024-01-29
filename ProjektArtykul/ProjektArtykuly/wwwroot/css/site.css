@@ -1,0 +1,224 @@
+/*
+    Czcionki 
+
+font-family: 'Bruno Ace', cursive;
+font-family: 'Inter', sans-serif;
+font-family: 'Monoton', cursive;
+font-family: 'Roboto', sans-serif;
+*/
+
+@font-face {
+    font-family: 'Monoton';
+    src: url(../fonts/Monoton-RXOM.ttf);
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: none;
+    scrollbar-color: #8300ea transparent;
+}
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 5px;
+       
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+      
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #8300ea;
+        border-radius: 5px;
+        border: 0px none #ffffff;
+    
+    }
+
+
+
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    width: 100vw !important;
+    place-items: center;
+    background-color: #fff;
+    z-index: 998;
+    margin-bottom: 5vh;
+}
+header{
+  width: 100vw;
+  padding: 0;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin: 0;
+  height: min-content;
+}
+.navbar {
+    height: min-content;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    background-color: transparent;
+    font-family: 'Bruno Ace', cursive;
+    font-size: 2vh;
+    text-decoration: none;
+    z-index: 10;
+    position: absolute;
+    width: 100vw;
+}
+.avatar{
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 3px solid #fff;
+    background-position: center;
+    background-size: cover;
+    height: 4vh;
+    width: 4vh;
+    position: absolute;
+    right: -3px;
+    top: 0;
+}
+.logo {
+    color: #000;
+    font-family: 'Bruno Ace', cursive;
+    font-size: 2.2vh;
+    font-weight: 400;
+    margin-left: 40px;
+    height: min-content;
+    width: max-content;
+    cursor: pointer;
+    text-decoration: none;
+}
+.navigator{
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    display: inline-flex;
+    flex-wrap: nowrap;
+ 
+}
+.navopt{
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    width: max-content;
+    padding-left: 2px;
+    padding-right: 2px;
+    grid-template-columns: auto;
+}
+.selector{
+    height: 2px;
+    width: 0;
+    transition: 0.15s;
+    content: '';
+    background-color: #8300EA;
+}
+.navopt:hover > .selector{
+    width: 100%;
+    transition: 0.25s;
+}
+.button {
+    display: grid;
+    height: 4vh;
+    padding-left: 2vh;
+    padding-right: 5vh;
+    place-items: center;
+    color: #fff;
+    font-family: 'Bruno Ace', cursive;
+    cursor: pointer;
+    font-size: 0.5em;
+    font-weight: 300;
+    background-color: #8300EA;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-right: 40px;
+    width: max-content;
+    grid-template-rows: auto 1px;
+    position: relative;
+}
+.btnselector {
+    height: 1px;
+    width: 0;
+    transition: 0.15s;
+    content: '';
+    background-color: #fff;
+}
+.button:hover > a > .btnselector {
+    width: 100%;
+    transition: 0.25s;
+}
+.cont{
+    min-height: 80vh;
+}
+footer {
+    text-align: center;
+    font-family: 'Inter';
+    color: #eeeeed;
+    min-height: 5vh;
+    height: auto;
+    padding-top: 0.2vh;
+    padding-bottom: 0.2vh;
+    background-color: #131313;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw !important;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1vh;
+    z-index: 1000;
+}
+.button:hover > .list {
+    height: auto;
+    transition: ease-in-out 0.35s;
+    padding-top: 10%;
+    opacity: 1;
+}
+.list {
+    display: grid;
+    justify-items: center;
+    width: 90%;
+    position: absolute;
+    z-index: -1;
+    background-color: #B35CF7;
+    left: 0;
+    margin-left: 5%;
+    top: 70%;
+    border-radius: 0px 0px 20px 20px;
+  
+    overflow: hidden;
+    height: 0;
+    transition: ease-in-out 0.35s;
+    padding: 0;
+}
+.list > a{
+    color: #fff;
+    font-family: "Bruno Ace";
+    cursor: pointer;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    background-color: transparent;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+.list > a:hover{
+    background-color: rgba(255,255,255,0.15);
+    transition: 0.15s;
+}

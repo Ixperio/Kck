@@ -1,0 +1,25 @@
+﻿@page
+@model ProjektArtykuly.Pages.LoginModel
+@{
+    ViewData["Title"] = "Logowanie";
+    ViewData["Css"] = "LoginCss.css";
+}
+    
+<div class="loginpage">
+    <form asp-page-handler="Login" method="post">
+        <h1><span style="color: #8300EA; ">IT</span>Xplorers</h1>
+                    <h3>Logowanie w systemie</h3>
+                    <label for="Email">Email</label>
+                    <input name="Email" type="email" placeholder="jan.kowalski@example.com" required maxsize="256"/>
+                    <label for="Password">Hasło</label>
+        <input name="Password" type="password" placeholder="&#149&#149&#149&#149&#149&#149&#149&#149" required minsize="8" maxsize="256" />
+                    <input type="submit" value="Zaloguj"/>
+        @{
+            if(Model.Error != "")
+            {
+                <h6 style="color: red; font-family: 'Bruno Ace';" ><i>@Model.Error</i></h6>
+            }
+        }
+                    <a asp-page="Register">Nie mam jeszcze konta, chcę je stworzyć</a>
+                </form>
+</div>
